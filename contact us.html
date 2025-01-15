@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #d63384;
+            font-size: 2.5em;
+            font-weight: bold;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: #6a0572;
+            font-style: italic;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border: 2px solid #d63384;
+            box-shadow: 0 0 8px rgba(214, 51, 132, 0.5);
+        }
+
+        button {
+            background: linear-gradient(90deg, #d63384, #ff758f);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(214, 51, 132, 0.4);
+        }
+
+        .map-container {
+            margin: 20px 0;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        marquee {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #d63384;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .sparkle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) scale(0.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="typewriter">CONTACT US</h1>
+        <h2>Feel free to reach out anytime!</h2>
+
+        <form id="contactForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="state">Your Current State:</label>
+            <select id="state" name="state" required>
+                <option value="Kel">Kelantan</option>
+                <option value="Sel">Selangor</option>
+                <option value="Ter">Terengganu</option>
+                <option value="PP">Pulau Pinang</option>
+                <option value="Per">Perak</option>
+                <option value="Joh">Johor</option>
+                <option value="Ked">Kedah</option>
+                <option value="Pah">Pahang</option>
+                <option value="Sar">Sarawak</option>
+                <option value="Sab">Sabah</option>
+                <option value="N. Sem">Negeri Sembilan</option>
+                <option value="KL">Kuala Lumpur</option>
+                <option value="Mel">Melaka</option>
+                <option value="Perlis">Perlis</option>
+            </select>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+
+            <button type="button" id="submitButton">Send Message via WhatsApp</button>
+        </form>
+
+        <div class="map-container">
+            <h2>Our Location</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8809856254807!2d101.72616827497114!3d3.1261564468493486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc3613698a6b23%3A0xa96ac8e1bbdddea6!2sAEON%20Mall%20Taman%20Maluri!5e0!3m2!1sen!2smy!4v1736774020073!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <marquee>THANK YOU FOR VISITING US! SEE YOU AGAIN SOON!</marquee>
+        <footer>
+            &copy; <span id="year"></span> Crochet & You Studio. All rights reserved.
+        </footer>
+    </div>
+
+    <div class="sparkle-container"></div>
+
+    <script>
+        // Update the current year in the footer
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Handle WhatsApp link generation
+        document.getElementById("submitButton").addEventListener("click", function () {
+            const name = encodeURIComponent(document.getElementById("name").value);
+            const email = encodeURIComponent(document.getElementById("email").value);
+            const state = encodeURIComponent(document.getElementById("state").value);
+            const message = encodeURIComponent(document.getElementById("message").value);
+
+            const whatsappURL = `https://wa.me/60192145788?text=Name:%20${name}%0AEmail:%20${email}%0AState:%20${state}%0AMessage:%20${message}`;
+            window.open(whatsappURL, "_blank");
+        });
+
+        // Create sparkling falling effect
+        const sparkleContainer = document.querySelector(".sparkle-container");
+
+        setInterval(() => {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.animationDuration = Math.random() * 3 + 2 + "s";
+            sparkleContainer.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 5000);
+        }, 200);
+    </script>
+</body>
+
+</html>
+
