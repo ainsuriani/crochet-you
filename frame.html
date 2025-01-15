@@ -82,16 +82,23 @@
         }
 
         /* Footer */
-        .footer {
-            height: 50px;
-            background: #ff69b4;
-            color: #fff;
-            text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 50px;
-            text-shadow: 1px 1px #ff85c1;
-        }
+        footer {
+    background-color: #f89fd3; 
+    color: #333; 
+    text-align: center; 
+    font-family: "Arial", sans-serif; 
+    font-size: 20px; 
+    border-top: 2px solid #ddd;
+    position: relative;
+  }
+
+  footer .clock {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 10px;
+    animation: fadeIn 1.5s ease;
+  }
 
         /* Decorative Elements */
 
@@ -128,9 +135,36 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
-        Welcome to Crochet & You Studio | Where Creativity Blossoms!
-    </div>
+    <footer>
+        <div class="clock" id="clock">Loading Time...</div>
+    
+        <p>&copy; <span id="current-year"></span> Crochet&YouStudio. All rights reserved.</p>
+        <p>Last updated: <span id="last-updated"></span></p>
+      </footer>
+
+      <!-- JavaScript for clock, dynamic year, and notifications -->
+  <script>
+    // Dynamic year and last updated date
+    const currentYear = new Date().getFullYear();
+    document.getElementById('current-year').textContent = currentYear;
+    const lastUpdated = new Date().toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    document.getElementById('last-updated').textContent = lastUpdated;
+
+    // Real-time clock
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+    setInterval(updateClock, 1000); // Update clock every second
+  </script>
 
 </body>
 </html>

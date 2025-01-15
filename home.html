@@ -13,6 +13,53 @@ body, html {
   height: 100%;
   line-height: 1.8;
 }
+
+.reel-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 50px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .reel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .reel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        .reel-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .reel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .reel-controls button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .reel-controls button:hover {
+            background: #e73370;
+        }
+
 /* Navigation bar styling */
 .topnav {
       overflow: hidden;
@@ -87,6 +134,41 @@ body, html {
   </div>
 </div>
 
+<div class="reel-container">
+  <div class="reel">
+      <div class="reel-item"><img src="https://via.placeholder.com/800x400?text=Slide+1" alt="Slide 1"></div>
+      <div class="reel-item"><img src="https://via.placeholder.com/800x400?text=Slide+2" alt="Slide 2"></div>
+      <div class="reel-item"><img src="https://via.placeholder.com/800x400?text=Slide+3" alt="Slide 3"></div>
+  </div>
+</div>
+
+<div class="reel-controls">
+  <button id="prev">Previous</button>
+  <button id="next">Next</button>
+</div>
+
+<script>
+  const reel = document.querySelector('.reel');
+  const items = document.querySelectorAll('.reel-item');
+  const totalItems = items.length;
+  let currentIndex = 0;
+
+  document.getElementById('next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateReel();
+  });
+
+  document.getElementById('prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateReel();
+  });
+
+  function updateReel() {
+      const offset = -currentIndex * 100;
+      reel.style.transform = `translateX(${offset}%)`;
+  }
+</script>
+
 <!-- Container (About Section) -->
 <div class="w3-content w3-container w3-padding-64" id="about">
   <h3 class="w3-left">About Crochet & You Studio</h3>
@@ -121,160 +203,6 @@ body, html {
 </div>
 
 
-
-
-<!---contact us--->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2, h3 {
-            text-align: center;
-            color: #333;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        label {
-            font-weight: bold;
-        }
-        input, select, textarea, button {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-        input[type="checkbox"], input[type="radio"] {
-            width: auto;
-            margin-right: 5px;
-        }
-        button {
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #218838;
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-        marquee {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
-
-<body>
-    <div class="container">
-        <h1>CONTACT US</h1>
-        <h2>Feel free to contact me anytime, anywhere</h2>
-
-        <form name="form1" method="post" action="mailto:ajirahhamid116@gmail.com">
-            <div>
-                <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first-name" required>
-            </div>
-            <div>
-                <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last-name" required>
-            </div>
-            <div>
-                <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" required>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label>Education:</label>
-                <input type="checkbox" name="spm" value="SPM"> SPM
-                <input type="checkbox" name="diploma" value="Diploma"> Diploma
-                <input type="checkbox" name="degree" value="Degree"> Degree
-            </div>
-            <div>
-                <label>Gender:</label>
-                <input type="radio" name="gender" value="male" required> Male
-                <input type="radio" name="gender" value="female"> Female
-            </div>
-            <div>
-                <label for="state">Your Current State:</label>
-                <select id="state" name="state" required>
-                    <option value="Kel">Kelantan</option>
-                    <option value="Sel">Selangor</option>
-                    <option value="Ter">Terengganu</option>
-                    <option value="PP">Pulau Pinang</option>
-                    <option value="Per">Perak</option>
-                    <option value="Joh">Johor</option>
-                    <option value="Ked">Kedah</option>
-                    <option value="Pah">Pahang</option>
-                    <option value="Sar">Sarawak</option>
-                    <option value="Sab">Sabah</option>
-                    <option value="N. Sem">Negeri Sembilan</option>
-                    <option value="KL">Kuala Lumpur</option>
-                    <option value="Mel">Melaka</option>
-                    <option value="Perlis">Perlis</option>
-                </select>
-            </div>
-            <div>
-                <label for="gambar">Upload File:</label>
-                <input type="file" id="gambar" name="gambar">
-            </div>
-            <div>
-                <label for="subject">Subject:</label>
-                <textarea id="subject" name="subject" cols="40" rows="5"></textarea>
-            </div>
-            <button type="submit" name="submit">Submit</button>
-        </form>
-
-        <marquee width="100%" bgcolor="white" scrollamount="8">THANK YOU FOR STOPPING BY. SEE YOU AGAIN!!!</marquee>
-        <footer>
-            &copy; <span id="year"></span> RAWRR. All rights reserved. 
-            <a href="mailto:ajirahhamid116@gmail.com">ajirahhamid116@gmail.com</a>
-        </footer>
-    </div>
-
-    <script>
-        // Update the current year in the footer
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-
- 
-<div align="center">
-<div class="container" id="location">
-    <h2>Our Location</h2>
-    <p>Dear customers, you can visit our store at the following locations:</p>
-    <div style="text-align: center;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.8809856254807!2d101.72616827497114!3d3.1261564468493486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc3613698a6b23%3A0xa96ac8e1bbdddea6!2sAEON%20Mall%20Taman%20Maluri!5e0!3m2!1sen!2smy!4v1736774020073!5m2!1sen!2smy" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-</div>
-</div>
-
 <!-- Footer -->
 <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
   <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
@@ -286,7 +214,6 @@ body, html {
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-text-green">w3.css</a></p>
 </footer>
 
 <script>
