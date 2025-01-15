@@ -3,110 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frame Page</title>
+    <title>WELCOME TO CROCHET & YOU STUDIO</title>
     <style>
-        /* General Reset */
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'Roboto', Arial, sans-serif;
-            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-            color: #333;
-        }
+        /* Reset and Global Styles */
 
-        /* Main Content Area Styling */
-        .content {
-            flex: 1;
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe6f3, #fddde6);
             display: flex;
             flex-direction: column;
-            background-color: rgba(255, 255, 255, 0.85);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            margin: 20px;
+            height: 100vh;
             overflow: hidden;
-            animation: fadeIn 1.5s ease;
-        }
+        align-items: center;
+    justify-content: center;}
 
-        .main {
-            flex: 1;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-bottom: 2px solid #f5a8c6;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
+        .login-container { 
+            background-color: #fff; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+            width: 350px; 
+            text-align: center; 
+        } 
+ 
+        .login-container h1 { 
+            margin-bottom: 20px; 
+            color: #333; 
+        } 
+ 
+        .login-container input { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 10px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+        } 
+ 
+        .login-container button { 
+            width: 100%; 
+            padding: 10px; 
+            background-color: #ff588f; 
+            border: none; 
+            color: white; 
+            font-size: 16px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            transition: background-color 0.3s; 
+        } 
+ 
+        .login-container button:hover { 
+            background-color: #f796b6; 
+        } 
+ 
+        .error { 
+            color: red; 
+            font-size: 14px; 
+            margin-bottom: 10px; 
+        } 
+    </style>
 
-        .bottom {
-            height: 60px;
-            background: linear-gradient(135deg, #fde2ef, #f5a8c6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
-            font-weight: bold;
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        /* Styling for Iframes */
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        iframe:hover {
-            transform: scale(1.02);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        body {
-            background-size: 200% 200%;
-            animation: gradientShift 6s ease infinite;
-        }
 
     </style>
+
 </head>
 <body>
-    <!-- Main Content Area -->
-    <div class="content">
-        <!-- Main Section -->
-        <div class="main">
-            <iframe src="welcome.html" title="Welcome Page"></iframe>
-        </div>
-        <!-- Bottom Section -->
-        <div class="bottom">
-            <iframe src="bottom.html" title="Bottom Page"></iframe>
-        </div>
+    <div class="login-container"> 
+        <h1>Welcome to Crochet & You !</h1> 
+        <h3>Dear customer, please fill in this details:</h3> 
+         
+            <input type="text" id="username" name="username" placeholder="Username" required> 
+            <input type="email" id="email" name="email" placeholder="Email" > 
+            <button onclick="document.location='frame.html'" >LOGIN</button> 
+        </form> 
     </div>
+
 </body>
 </html>
-
