@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Client reviews and testimonials for Crochet & You Studio. Leave your feedback and explore what others say about our handcrafted items.">
+    <meta name="keywords" content="crochet, reviews, testimonials, handcrafted, handmade, Crochet & You Studio">
     <title>Client Reviews - Crochet & You Studio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <!-- Swiper.js Styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+
     <style>
         /* Global Styles */
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #fceaff 0%, #ffd7e9 55%, #ffedf3 100%);
@@ -32,7 +39,7 @@
 
         .heading {
             font-size: 32px;
-            font-weight: bold;
+            font-weight: 600;
             text-align: center;
             margin-bottom: 30px;
             color: #ff69b4;
@@ -97,7 +104,7 @@
             margin-bottom: 15px;
             border: 2px solid #ffb3c1;
             border-radius: 10px;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         .form-container button {
@@ -130,40 +137,57 @@
         }
 
         /* Navigation bar styling */
-    .topnav {
-      overflow: hidden;
-      background-color: #222;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-    .topnav a {
-      float: left;
-      color: #fff;
-      text-align: center;
-      padding: 14px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      transition: all 0.3s ease;
-    }
+        .topnav {
+            overflow: hidden;
+            background-color: #222;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
 
-    .topnav a:hover {
-      background-color: #ff66b2;
-      color: #222;
-    }
+        .topnav a {
+            float: left;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
 
-    .topnav a.active {
-      background-color: #c7aec6;
-      color: white;
-    }
+        .topnav a:hover {
+            background-color: #ff66b2;
+            color: #222;
+        }
+
+        .topnav a.active {
+            background-color: #c7aec6;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide {
+                max-width: 300px;
+            }
+
+            .form-container,
+            .card {
+                padding: 20px;
+            }
+        }
     </style>
-    
 </head>
 <body>
-
-    
+    <!-- Navigation Bar -->
+    <div class="topnav">
+        <a href="#" class="active">Home</a>
+        <a href="#">About</a>
+        <a href="#">Products</a>
+        <a href="#">Testimonials</a>
+        <a href="#">Contact</a>
+    </div>
 
     <!-- Testimonial Section -->
     <div class="responsive-container-block bigContainer">
@@ -203,11 +227,11 @@
             <form id="ratingForm">
                 <input type="text" id="name" placeholder="Your Name" required>
                 <div class="star-container" id="starRating">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
                 </div>
                 <textarea id="review" rows="4" placeholder="Write your review here..." required></textarea>
                 <button type="submit">Submit</button>
@@ -278,6 +302,5 @@
             alert(`Thank you for your review, ${name}!`);
         });
     </script>
-
 </body>
 </html>
