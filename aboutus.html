@@ -4,53 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-   <link rel="stylesheet" href="style_ajirah.css">
+    <link rel="stylesheet" href="style_ajirah.css">
     <a name="top"></a>
 
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            margin: 0;
+            margin: 20px;
             padding: 0;
             background-color: #fadbd8;
             color: #333;
             line-height: 1.6;
         }
-        /* Navigation bar styling */
-.topnav {
-      overflow: hidden;
-      background-color: #222;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-    .topnav a {
-      float: left;
-      color: #fff;
-      text-align: center;
-      padding: 14px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      transition: all 0.3s ease;
-    }
-
-    .topnav a:hover {
-      background-color: #d3b6c4;
-      color: #222;
-    }
-
-    .topnav a.active {
-      color: white;
-    }
 
         h1 {
             text-align: center;
             color: #ce5353;
-            font-size: 36px;
-            margin: 30px 0;
+            font-size: 48px;
+            margin-top: 20px;
+            letter-spacing: 2px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 4px solid #ce5353;
+            animation: typing 4s steps(30) 1s 1 normal both, blink-caret 0.75s step-end infinite;
         }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+
         h2 {
             text-align: center;
             font-style: italic;
@@ -58,32 +51,7 @@
             margin-bottom: 30px;
             font-size: 20px;
         }
-        .content {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .profile-img {
-            float: left;
-            margin-right: 20px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border: 2px solid #dd9f9a;
-        }
-        .section-title {
-            font-size: 24px;
-            color: #d8758b;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .section-content {
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
+
         blockquote {
             background: #f5b7b1;
             padding: 15px;
@@ -92,110 +60,274 @@
             border-left: 5px solid #833848;
             margin: 20px 0;
         }
-        .image-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .image-container img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-        .video-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        #typing {
-            font-size: 50px;
-            font-family: monospace;
-            color: #913347;
-            border-right: 2px solid #ce5353;
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-        hr {
-            border: 0;
-            height: 2px;
-            background: #f5b7b1;
-            margin: 20px 0;
-        }
-        .mission {
-            text-align: center;
+
+        .content {
+            max-width: 1000px;
+            margin: 20px auto;
             padding: 20px;
-            background-color: #f9ebea;
+            background-color: #fff;
             border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
         }
+        .container-wrapper {
+    display: flex;
+    justify-content: center; /* Pusatkan kandungan */
+    gap: 20px; /* Jarak antara setiap elemen */
+    flex-wrap: nowrap; /* Susun semua elemen dalam satu baris */
+    overflow-x: auto; /* Tambahkan tatal mendatar jika ruang tidak mencukupi */
+    padding: 10px; /* Tambahkan ruang di sekeliling */
+}
+
+.container {
+    position: relative;
+    width: 150px; /* Lebar tetap */
+    height: 150px; /* Tinggi tetap */
+    border: 3px solid #ddd; /* Tambah sempadan lembut */
+    border-radius: 12px; /* Penjuru bulat */
+    overflow: hidden; /* Pastikan kandungan berada dalam sempadan bulat */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayang halus */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Kesan hover lembut */
+  }
+
+.container:hover {
+  transform: translateY(-10px); /* Slight lift on hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%; /* Pastikan imej muat dengan kontena */
+    object-fit: cover; /* Potong imej untuk memenuhi kontena */
+
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(255, 188, 229, 0.8); /* Softer overlay background */
+}
+
+.container:hover .overlay {
+  opacity: 1; /* Overlay becomes visible on hover */
+}
+
+.text {
+  color: #333;
+  font-size: 16px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+}
+        /* Mission, Vision, FAQ to the bottom */
+        .dropdown-container {
+            margin-top: 20px;
+        }
+
+        /* Style for dropdown */
+        .dropdown {
+            margin: 10px 0;
+            position: relative;
+            border: 2px solid #dbdbdb;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #911c5c;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #ffffff;
+            font-weight: bold;
+        }
+
+        .dropdown-title:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown-content {
+            display: none;
+            padding: 10px 15px;
+            background-color: #fafafa;
+            border-top: 1px solid #ccc;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .back-to-top {
+            display: inline-block;
+            background-color: #ff77ad;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #e093b9;
+            transform: translateY(-3px);
+        }
+
+        
+
     </style>
 </head>
 
 <body>
-
+   
     <div class="content">
-        <div align="center">
-            <div id="typing"></div>
-            <script>
-                const text = "ABOUT US";
-                let index = 0;
+        <div align="justify">
 
-                function typeText() {
-                    const typingElement = document.getElementById("typing");
-                    typingElement.textContent = text.slice(0, index);
-                    index++;
-
-                    if (index <= text.length) {
-                        setTimeout(typeText, 100);
-                    }
-                }
-                typeText();
-            </script>
-        </div>
-
-        <div class="image-container">
-            <h2>Organization Chart</h2>
-            <map name="image-map">
-            <!-- Image Map Generated by http://www.image-map.net/ -->
-            <img src="images-ajirah/organization_chart - ajirah.png" usemap="#image-map">
-
-        <map name="image-map">
-        <area target="_blank" alt="Nur Aliyah" title="Nur Aliyah" href="https://www.instagram.com/nura.liya__/" coords="815,289,85" shape="circle">
-        <area target="_blank" alt="Ain" title="Ain" href="https://www.instagram.com/ainsarizam/" coords="176,290,93" shape="circle">
-        <area target="_blank" alt="Hazeerah" title="Hazeerah" href="https://www.instagram.com/_hzeerh._/" coords="389,289,91" shape="circle">
-        <area target="_blank" alt="Ajirah" title="Ajirah" href="https://www.instagram.com/_ajirah/" coords="604,291,90" shape="circle">
-        </map>
-        </div>
+        <h1> Welcome to this creative space! </h1>
 
         <div align="center">
-        <blockquote>"Crafting moments of joy, one stitch at a time."</blockquote>
+        <a href="images-ajirah/logo-ajirah.png">
+        <img src="images-ajirah/logo-ajirah.png"  ></a>
+
+            <blockquote>"Each stitch whispers secrets of grace"</blockquote>
         </div>
-
-        <p>Crochet & You Studio is a newly established creative arts and crafts business dedicated to the art of crochet since 2024. Crochet is the art of knitting using yarn and knitting needles to create a variety of unique products such as bags, hats, shirts, toys, tablecloths, and other accessories. Moreover, each item is exclusively handmade and can be customized according to the customer's taste. In addition, crochet products are suitable for various ages and are often used as special gifts. This traditional art also evolves with more modern designs, making it relevant to today's trends. </p>
-
-        <p>The selection of our store location is strategic, located at AEON Mall Taman Maluri, Jalan Jejaka, Maluri, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur. Therefore, our target market size is people who live in the Taman Maluri area or Kuala Lumpur. Our studio also offers comprehensive crochet classes for beginners and acts as a supplier for a wide range of crochet materials and tools.</p>
-
-        <hr>
-
-        <div class="image-container">
-            <h2>Our Logo</h2>
-            <img src="images-ajirah/logo-ajirah.png" alt="Our Logo">
-        </div>
-    </div>
-
-    <div class="mission">
-        <h2>Our Mission</h2>
-        <p>At Crochet & You Studio, our goal is to create crochet products that are truly exceptional. We believe in crafting items that are not only beautiful and functional but also of the highest quality.</p>
-        <h2>Our Vission</h2>
-        <p>At Crochet & You Studio, our vision is to provide a welcoming environment for people of all skill levels to come together and express their creativity through crochet. Whether they just starting out or have been crocheting for years, we believe that everyone has the potential to learn and grow.
-        </p>
-    </div>
-
-    <div align="center"> 
-        <p><button><a href="#top">Back to top </a></button></p> 
         </div>
     
+        <p><b>Crochet & You Studio</b> is a newly established creative arts and crafts business dedicated to the art of crochet since 2024. The selection of our store location is strategic, located at <strong><i>AEON Mall Taman Maluri, Jalan Jejaka, Maluri, 55100 Kuala Lumpur, Federal Territory of Kuala Lumpur.</i></strong></p>
+        <p>Our studio also offers comprehensive crochet classes for beginners and acts as a supplier for a wide range of crochet materials and tools.</p>
+        <p>Crochet is the art of knitting using yarn and knitting needles to create a variety of unique products such as bags, hats, shirts, toys, tablecloths, and other accessories. Moreover, each item is exclusively handmade and can be customized according to the customer's taste. In addition, crochet products are suitable for various ages and are often used as special gifts. This traditional art also evolves with more modern designs, making it relevant to today's trends.</p>
+       
 
+        <h2>Organization Chart</h2>
+
+        <div class="container-wrapper">
+          <div class="container">
+            <img src="images-ajirah/Ain Suriani.png" alt="Avatar" class="image">
+            <div class="overlay">
+              <div class="text">Nur Ain Suriani Binti Sarizam<br><p>Manager</p></div>
+            </div>
+          </div>
+        
+          <div class="container">
+            <img src="images-ajirah/Nur Hazeerah.png" alt="Avatar" class="image">
+            <div class="overlay">
+              <div class="text">Nur Hazeerah Binti Mohd Nasrul Hakim<br><p>Administrative Manager</p></div>
+            </div>
+          </div>
+        
+          <div class="container">
+            <img src="images-ajirah/Ajirah Hamid.png" alt="Avatar" class="image">
+            <div class="overlay">
+              <div class="text">Ajirah Binti Abd Hamid<br><p>Marketing Manager</p></div>
+            </div>
+          </div>
+        
+          <div class="container">
+            <img src="images-ajirah/Nur Aliyah.png" alt="Avatar" class="image">
+            <div class="overlay">
+              <div class="text">Nur Aliyah Binti Abd Malek<br><p>Financial Manager</p></div>
+            </div>
+          </div>
+        </div>
+        
+            <script>
+                function toggleDropdown(id) {
+                    const dropdown = document.getElementById(id);
+                    dropdown.classList.toggle('active');
+                }
+            </script>
+
+        <!-- Right side - Vision, Mission, FAQ -->
+        <div class="dropdown-container">
+            <!-- Vision Dropdown -->
+            <div class="dropdown" id="dropdown-vision">
+                <div class="dropdown-title" onclick="toggleDropdown('dropdown-vision')">
+                    Vision
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <ul>
+                    <li><p>To provide a welcoming environment for people of all skill levels to come together and express their creativity through crochet. Whether they just starting out or have been crocheting for years, we believe that everyone has the potential to learn and grow.</p>
+                    </li>
+                </ul>
+                </div>
+            </div>
+
+            <!-- Mission Dropdown -->
+            <div class="dropdown" id="dropdown-mission">
+                <div class="dropdown-title" onclick="toggleDropdown('dropdown-mission')">
+                    Mission
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                    <ul>
+                    <li><p>To craft high-quality, sustainable crochet items and offer excellent crochet lessons. Our goal is to inspire creativity, develop talents, and establish a welcoming community of crochet lovers. By offering our items and classes, we hope to spread the love for crochet, foster self-improvement, and make a positive impact on the world around us.</p></li>
+                </ul>
+                </div>
+            </div>
+
+            <!-- FAQ Dropdown -->
+            <div class="dropdown" id="dropdown-faq">
+                <div class="dropdown-title" onclick="toggleDropdown('dropdown-faq')">
+                    Frequently Asked Questions
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+                <div class="dropdown-content">
+                <ol>
+                <li>What types of crochet products do you offer?</li>
+                <p>We offer handmade crochet items such as bags, hats, flower and custom orders
+                tailored to your preferences.</p>
+                
+                <li>How long does it take to complete a custom order?</li>
+                    <p>Depending on the complexity of the design, it can take anywhere from 1 to 4 weeks. 
+                    We’ll provide an estimated timeline during the ordering process.</p>
+
+                <li>What happens if my item is damaged during shipping?</li>
+                    <p>If your order arrives damaged, please contact us immediately 
+                    with photos, and we’ll work on a replacement or refund.</p>
+
+                <li>Can I request a custom design?</li>
+                    <p>Yes, we accept custom orders! Simply contact us with your design ideas or inspirations, 
+                    and we’ll work together to bring it to life.</p>
+                
+                <li>How do I care for crochet items?</li>
+                    <p>Most crochet items should be hand-washed in cold water and laid flat to dry. 
+                    Detailed care instructions are provided with each order.</p>
+            </ol>
+                </div>
+            </div>
+        </div>
+
+        
+        <div align="center">
+            <p><a href="#top" class="back-to-top">Back to Top</a></p>
+        </div>
+
+      
 </body>
 </html>
-
-
-
