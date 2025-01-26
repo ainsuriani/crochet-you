@@ -1,210 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>HOME PAGE</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Cursive" 'Serif';}
-body, html {
-  height: 100%;
-  line-height: 1.8;
-}
-
-.reel-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 50px auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .reel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .reel-item {
-            min-width: 100%;
-            box-sizing: border-box;
-        }
-
-        .reel-item img {
-            width: 100%;
-            display: block;
-        }
-
-        .reel-controls {
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             display: flex;
             justify-content: center;
-            margin-top: 10px;
+            align-items: center;
+            height: 100vh;
+            animation: backgroundAnimation 10s infinite alternate;
         }
 
-        .reel-controls button {
-            background: #ff4081;
-            color: white;
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #ec779e, #fad0c4); }
+            50% { background: linear-gradient(135deg, #fac7ec, #a18cd1); }
+            100% { background: linear-gradient(135deg, #f1dab8, #fcb69f); }
+        }
+
+        .login-container {
+            color: #747279;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            color: #ce1150;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff588f;
             border: none;
-            padding: 10px 20px;
-            margin: 0 5px;
+            color: white;
+            font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
-        .reel-controls button:hover {
-            background: #e73370;
+        .login-container button:hover {
+            background-color: #e26991;
+            transform: scale(1.05);
         }
 
-/* Navigation bar styling */
-.topnav {
-      overflow: hidden;
-      background-color: #222;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-    .topnav a {
-      float: left;
-      color: #fff;
-      text-align: center;
-      padding: 14px 20px;
-      text-decoration: none;
-      font-size: 18px;
-      transition: all 0.3s ease;
-    }
-
-    .topnav a:hover {
-      background-color: #ff66b2;
-      color: #222;
-    }
-
-    .topnav a.active {
-      background-color: #df4599;
-      color: white;
-    }
-
-/* Create a Parallax Effect */
-.bgimg-1, .bgimg-2, .bgimg-3 {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* First image (Logo. Full height) */
-.bgimg-1 {
-  background-image: url('images-ajirah/background-ajirah.png');
-  min-height: 100%;
-}
-
-.w3-wide {letter-spacing: 10px;}
-.w3-hover-opacity {cursor: pointer;}
-
-/* Turn off parallax scrolling for tablets and phones */
-@media only screen and (max-device-width: 1600px) {
-  .bgimg-1, .bgimg-2, .bgimg-3 {
-    background-attachment: scroll;
-    min-height: 400px;
-  }
-}
-
-</style>
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-
 <body>
 
-   
+    <div class="login-container">
+        <h1> Welcome to Crochet & You Studio</h1>
+        <h3><i>Dear customer, please fill in this details:</i></h3>
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <button onclick="login()">LOGIN</button>
+    </div>
 
-<!-- First Parallax Image with Logo Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-  <div class="w3-display-middle" style="white-space:nowrap;">
-    <span class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity">CROCHET <span class="w3-hide-small">& YOU</span> STUDIO</span>
-    <div align="center">
-    <p font="arial" ><b>"EACH STITCH WHISPER SECRETS OF GRACE" </b></p>
-    <p><hr size ="5" color ="#17202a" width="90%"></p>
-    </p></div>
-  </div>
-</div>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
 
-<div class="reel-container">
-  <div class="reel">
-      <div class="reel-item"><img src="https://via.placeholder.com/800x400?text=Slide+1" alt="Slide 1"></div>
-      <div class="reel-item"><img src="https://via.placeholder.com/800x400?text=Slide+2" alt="Slide 2"></div>
-      <div class="reel-item"><img src="https://via.placeholder.com/800x400?text=Slide+3" alt="Slide 3"></div>
-  </div>
-</div>
+            // Check if username contains more than one word
+            const usernameRegex = /\b\w+\s+\w+/;
 
-<div class="reel-controls">
-  <button id="prev">Previous</button>
-  <button id="next">Next</button>
-</div>
-
-<script>
-  const reel = document.querySelector('.reel');
-  const items = document.querySelectorAll('.reel-item');
-  const totalItems = items.length;
-  let currentIndex = 0;
-
-  document.getElementById('next').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % totalItems;
-      updateReel();
-  });
-
-  document.getElementById('prev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-      updateReel();
-  });
-
-  function updateReel() {
-      const offset = -currentIndex * 100;
-      reel.style.transform = `translateX(${offset}%)`;
-  }
-</script>
-
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <h3 class="w3-left">About Crochet & You Studio</h3>
-<br> 
-  <p><hr size ="5" color ="#17202a" width="90%"></p>
-  <div align="center">
-  <p>Crochet & You Studio is a newly established creative arts and crafts business dedicated to the art of crochet. 
-    Crochet is the art of knitting using yarn and knitting needles to create a variety of unique products such as bags, hats, shirts, toys, tablecloths, and other accessories. Moreover,each item is exclusively handmade and can be customized according to the customer's taste. In addition, crochet products are suitable for various ages and are often used as special gifts. 
-    This traditional art also evolves with more modern designs, making it relevant to today's trends. </div>
-
-  <div class="w3-row-padding w3-center">
-    <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px" onclick="document.location='aboutus.html'" > MORE</button>
-  </div>
-
-  <p class="w3-large w3-center w3-padding-16"> Hot Sales! </p>
-  <p class="w3-wide"><i class="fa fa-camera"></i>Keychain</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:90%">90%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-laptop"></i>Flower</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:85%">85%</div>
-  </div>
-  <p class="w3-wide"><i class="fa fa-snapchat"></i>Hat</p>
-  <div class="w3-light-grey">
-    <div class="w3-container w3-padding-small w3-dark-grey w3-center" style="width:75%">75%</div>
-  </div>
-</div>
-
-<div class="w3-content w3-container w3-padding-64" id="about">
-  <button class="w3-button w3-padding-large w3-light-grey" style="margin-top:64px" onclick="document.location='about us.html'" > Shop Now </button>
-</div>
-
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
-  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-</footer>
+            if (usernameRegex.test(username) && email) {
+                alert(`Hello ${username}, Welcome to Crochet & You Studio!🧶🌸`);
+                // Redirect to the home page after displaying the message
+                window.location.href = 'home.html';
+            } else if (!usernameRegex.test(username)) {
+                alert('Please enter your full name include your father name(e.g., Zayn Malek ) in the username field.');
+            } else {
+                alert('Please enter both your full name and email before logging in.');
+            }
+        }
+    </script>
 
 </body>
 </html>
