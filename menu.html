@@ -4,79 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
-    <link rel="stylesheet" href="style.css"> <!-- Fixed link tag for CSS -->
     <style>
-        /* Basic reset and layout */
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #fbe3e8;
         }
 
-        /* Navigation Bar Styling */
-        .topnav {
-            background-color: #222;
-            overflow: hidden;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        /* Navigation Bar */
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: #f8cdd1;
+            padding: 12px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 20px 20px;
         }
 
-        .topnav a {
-            color: #fff;
-            padding: 14px 20px;
+        .nav a {
             text-decoration: none;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
-            display: inline-block;
+            color: #5a3e3e;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 12px 20px;
+            border-radius: 20px;
+            transition: 0.3s ease-in-out;
+            margin: 0 10px;
         }
 
-        .topnav a:hover {
-            background-color: #ff66b2;
-            color: #222;
-        }
-
-        .topnav a.active {
-            background-color: #c7aec6;
+        .nav a:hover {
+            background-color: #f5b5bb;
             color: white;
         }
 
-        /* Heading Styling */
-        h1 {
-            text-align: center;
-            font-size: 36px;
-            color: #ce5353;
-            margin-top: 20px;
+        .nav a.active {
+            background-color: #d46a7c;
+            color: white;
         }
 
-        /* Video Styling */
-        iframe {
-            display: block;
-            margin: 20px auto;
-            border-radius: 8px;
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav a {
+                display: block;
+                width: 80%;
+                text-align: center;
+                margin: 5px 0;
+            }
         }
-
-        /* Page Styling */
-        .container {
-            padding: 20px;
-            text-align: center;
-        }
+    
     </style>
 </head>
 
 <body>
-
-    <!-- Main Content -->
-    <div class="container">
-          <!-- Navigation Bar -->
-    <div class="topnav">
-        <a class="active" href="home.html">Home</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="homeshop.html">Product</a>
-        <a href="contact us.html">Contact Us</a>
-        <a href="testimonial.html">Testimonials</a>
-        <a href="index.html">Log Out</a>
+    <div class="nav">
+        <a class="active" href="home.html" target="main">Home</a>
+        <a href="aboutus.html" target="main">About Us</a>
+        <a href="homeshop.html" target="main">Product</a>
+        <a href="contact us.html" target="main">Contact Us</a>
+        <a href="testimonial.html" target="main">Testimonials</a>
+        <a href="index.html" target="main">Log Out</a>
        </a>
     </div>
 

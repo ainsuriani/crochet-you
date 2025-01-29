@@ -2,68 +2,85 @@
     <head>
         <title>Bottom Page</title>
     </head>
-    <style>
-        footer {
-    background-color: #f89fd3; 
-    color: #333; 
-    text-align: center; 
-    font-family: "Arial", sans-serif; 
-    font-size: 20px; 
-    border-top: 2px solid #ddd;
-    position: relative;
-  }
-
-  footer .clock {
-    font-size: 20px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 10px;
-    animation: fadeIn 1.5s ease;
-  }
-
-        /* Decorative Elements */
-
-
-        .sidebar::after {
-            content: '✾';
-            position: absolute;
-            font-size: 80px;
-            color: rgba(255, 255, 255, 0.1);
-            bottom: 10%;
-            right: 15%;
-        }
-    </style>
-    <body>
-        <!-- Footer -->
-    <footer>
-        <div class="clock" id="clock">Loading Time...</div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Soft Pink Footer</title>
+        <style>
+            /* Footer Styling */
+            footer {
+                background-color: #fcd8e2; /* Soft pastel pink */
+                color: #5a3e3e; /* Warm brownish-pink text */
+                text-align: center;
+                font-family: "Arial", sans-serif;
+                font-size: 15px;
+                padding: 15px 0;
+                border-radius: 15px 15px 0 0; /* Rounded corners at the top */
+                box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.1);
+                position: relative;
+                width: 100%;
+            }
     
-        <p>&copy; <span id="current-year"></span> Crochet&YouStudio. All rights reserved.</p>
-        <p>Last updated: <span id="last-updated"></span></p>
-      </footer>
-
-      <!-- JavaScript for clock, dynamic year, and notifications -->
-  <script>
-    // Dynamic year and last updated date
-    const currentYear = new Date().getFullYear();
-    document.getElementById('current-year').textContent = currentYear;
-    const lastUpdated = new Date().toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-    document.getElementById('last-updated').textContent = lastUpdated;
-
-    // Real-time clock
-    function updateClock() {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      const timeString = `${hours}:${minutes}:${seconds}`;
-      document.getElementById('clock').textContent = timeString;
-    }
-    setInterval(updateClock, 1000); // Update clock every second
-  </script>
+            /* Clock Styling */
+            .clock {
+                font-size: 20px;
+                font-weight: bold;
+                color: #d46a7c; /* Deeper pink for contrast */
+                margin-bottom: 5px;
+                animation: fadeIn 1.5s ease-in-out;
+            }
+    
+            /* Animation for smooth appearance */
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+    
+            /* Responsive Styling */
+            @media (max-width: 600px) {
+                footer {
+                    font-size: 14px;
+                    padding: 10px 0;
+                }
+                .clock {
+                    font-size: 18px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+    
+        <!-- Footer -->
+        <footer>
+            <div class="clock" id="clock">Loading Time...</div>
+            <p>&copy; <span id="current-year"></span> Crochet & You Studio. All rights reserved.</p>
+            <p>Last updated: <span id="last-updated"></span></p>
+        </footer>
+    
+        <!-- JavaScript for Dynamic Time and Date -->
+        <script>
+            // Set dynamic year and last updated date
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            document.getElementById('last-updated').textContent = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+    
+            // Real-time clock function
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours().toString().padStart(2, '0');
+                const minutes = now.getMinutes().toString().padStart(2, '0');
+                const seconds = now.getSeconds().toString().padStart(2, '0');
+                document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            }
+    
+            // Update clock every second
+            setInterval(updateClock, 1000);
+        </script>
+    
     </body>
-</html>
+    </html>
