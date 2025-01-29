@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #ec779e, #fad0c4); }
+            50% { background: linear-gradient(135deg, #fac7ec, #a18cd1); }
+            100% { background: linear-gradient(135deg, #f1dab8, #fcb69f); }
+        }
+
+        .login-container {
+            color: #747279;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            color: #ce1150;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff588f;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .login-container button:hover {
+            background-color: #e26991;
+            transform: scale(1.05);
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1> Welcome to Crochet & You Studio</h1>
+        <h3><i>Dear customer, please fill in this details:</i></h3>
+        <input type="text" id="username" name="username" placeholder="Username" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <button onclick="login()">LOGIN</button>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            // Check if username contains more than one word
+            const usernameRegex = /\b\w+\s+\w+/;
+
+            if (usernameRegex.test(username) && email) {
+                alert(`Hello ${username}, Welcome to Crochet & You Studio!🧶🌸`);
+                // Redirect to the home page after displaying the message
+                window.location.href = 'home.html';
+            } else if (!usernameRegex.test(username)) {
+                alert('Please enter your full name include your father name(e.g., Zayn Malek ) in the username field.');
+            } else {
+                alert('Please enter both your full name and email before logging in.');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
