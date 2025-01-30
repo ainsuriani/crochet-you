@@ -199,9 +199,9 @@
 
        // Star Rating Script
       const stars = document.querySelectorAll('.star');
-      let selectedRating = 0;
+let selectedRating = 0;
 
-    stars.forEach((star, index) => {
+stars.forEach((star, index) => {
     star.addEventListener('click', () => {
         selectedRating = star.getAttribute('data-value');
         
