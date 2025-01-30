@@ -1,9 +1,9 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fffafc; /* Soft pink background */
-  color: #4a4a4a;
+  background: linear-gradient(135deg, #fceaff 0%, #ffd7e9 55%, #ffedf3 100%);
+  min-height: 100vh;
 }
 
 h1, h2 {
@@ -175,6 +175,57 @@ p {
   text-align: center;
 }
 
+form {
+  width: 300px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px; /* Space between fields */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#order-summary, #shipping-info {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.container {
+  width: 60%; /* Adjust this as per your requirement */
+  margin: 0 auto; /* This will center the container horizontally */
+  padding: 20px;
+  text-align: left; /* Align the content to the left inside the container */
+}
+
+h3 {
+  margin-top: 20px;
+}
 
 
 

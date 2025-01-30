@@ -4,19 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shop - Crochet & You Studio</title>
+  <link rel="stylesheet" href="style_ajirah.css">
   <link rel="stylesheet" href="style-nura.css">
-  <style>
-    /* Soft Pink Theme Styles */
 
-  </style>
+  <script>
+    if (!localStorage.getItem('userLoggedIn')) {
+        alert('Please log in first!');
+        window.location.href = 'log in.html'; // Redirect to login page
+    }
+  </script>
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
-    <h1>Shop Our Products</h1>
-  </header>
-
-
   <!-- Filterable Gallery -->
   <section class="shop">
     <h2>Products</h2>
@@ -156,54 +154,52 @@
     <p class="total">Total: RM<span id="total-price">0.00</span></p>
   </section>
 
+    <div align="center">
+    <a href="checkout.html" class="back-to-top">Go to Checkout</a>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    document.getElementById('add-to-cart-product1').addEventListener('click', function() {
+        cart.push({ name: 'Product 1', price: 20 });
+        localStorage.setItem('cart', JSON.stringify(cart));
+    });
+
+    document.getElementById('add-to-cart-product2').addEventListener('click', function() {
+        cart.push({ name: 'Product 2', price: 30 });
+        localStorage.setItem('cart', JSON.stringify(cart));
+    });
+</script>
+
+  <div align="center">
+    <p><a href="#top" class="back-to-top">Back to Top</a></p>
+</div>
+
   <script>
-    // JavaScript to filter products
-    function filterProducts(category) {
-      const products = document.querySelectorAll('.product');
-      products.forEach(product => {
-        product.style.display = category === 'all' || product.dataset.category === category ? 'block' : 'none';
-      });
-    }
+    letcart = JSON.parse(localStorage.getItem('cart')) || [];
+  updateCart();
 
-    // JavaScript to add items to the cart
-    function addToCart(productName) {
-      const cartList = document.getElementById('cart-list');
-      const li = document.createElement('li');
-      li.textContent = productName;
-      cartList.appendChild(li);
-    }
+  function addToCart(productName, productPrice) {
+    cart.push({ name: productName, price: productPrice });
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+  }
 
-    // Cart array to store items
-    const cart = [];
+  function updateCart() {
+    const cartList = document.getElementById('cart-list');
+    const totalPriceElem = document.getElementById('total-price');
+    cartList.innerHTML = '';
+    let totalPrice = 0;
+    cart.forEach((item) => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${item.name} - RM ${item.price.toFixed(2)}`;
+      cartList.appendChild(listItem);
+      totalPrice += item.price;
+    });
+    totalPriceElem.textContent = totalPrice.toFixed(2);
+  }
 
-    function addToCart(productName, productPrice) {
-      // Add product to cart array
-      cart.push({ name: productName, price: productPrice });
-      updateCart();
-    }
-
-    function updateCart() {
-      // Get cart list and total price elements
-      const cartList = document.getElementById('cart-list');
-      const totalPriceElem = document.getElementById('total-price');
-
-      // Clear current cart list
-      cartList.innerHTML = '';
-
-      // Calculate total price
-      let totalPrice = 0;
-
-      // Populate cart list
-      cart.forEach((item) => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${item.name} - ${item.price.toFixed(2)}`;
-        cartList.appendChild(listItem);
-        totalPrice += item.price;
-      });
-
-      // Update total price
-      totalPriceElem.textContent = totalPrice.toFixed(2);
-    }
   </script>
 </body>
 </html>

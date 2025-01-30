@@ -23,6 +23,50 @@
             100% { background: linear-gradient(135deg, #f1dab8, #fcb69f); }
         }
 
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        .container h1, .container h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff588f;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .container button:hover {
+            background-color: #f796b6;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
         .login-container {
             color: #747279;
             background-color: rgba(255, 255, 255, 0.9);
@@ -74,38 +118,103 @@
             font-size: 14px;
             margin-bottom: 10px;
         }
+
+        .login-btn {
+        width: 100%;
+        padding: 10px;
+        background: #ff85a2;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .login-btn:hover {
+        background: #ff6385;
+    }
     </style>
 </head>
 <body>
+    <div class="container" id="register-container">
+        <h1>Register</h1>
+        <input type="text" id="reg-username" placeholder="Username" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Password" required>
+        <button onclick="register()">Register</button>
+        <p id="reg-error" class="error"></p>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Log in here</a>.</p>
+    </div>
 
-    <div class="login-container">
-        <h1> Welcome to Crochet & You Studio</h1>
-        <h3><i>Dear customer, please fill in this details:</i></h3>
-        <input type="text" id="username" name="username" placeholder="Username" required>
-        <input type="email" id="email" name="email" placeholder="Email" required>
-        <button onclick="login()">LOGIN</button>
+    <div class="container" id="login-container" style="display: none;">
+        <h1>Log In</h1>
+        <input type="text" id="login-username" placeholder="Username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button class="login-btn" onclick="login()">Log In</button>
+        <p id="login-error" class="error"></p>
+        <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a>.</p>
     </div>
 
     <script>
-        function login() {
-            const username = document.getElementById('username').value.trim();
-            const email = document.getElementById('email').value.trim();
+        // Show Register Form
+        function showRegister() {
+            document.getElementById('register-container').style.display = 'block';
+            document.getElementById('login-container').style.display = 'none';
+        }
 
-            // Check if username contains more than one word
-            const usernameRegex = /\b\w+\s+\w+/;
+        // Show Login Form
+        function showLogin() {
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        }
 
-            if (usernameRegex.test(username) && email) {
-                alert(`Hello ${username}, Welcome to Crochet & You Studio!🧶🌸`);
-                // Redirect to the home page after displaying the message
-                window.location.href = 'home.html';
-            } else if (!usernameRegex.test(username)) {
-                alert('Please enter your full name include your father name(e.g., Zayn Malek ) in the username field.');
+        // Register User
+        function register() {
+            const username = document.getElementById('reg-username').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            if (username && email && password) {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const userExists = users.some(user => user.username === username);
+
+                if (userExists) {
+                    document.getElementById('reg-error').innerText = 'Username already exists!';
+                } else {
+                    users.push({ username, email, password });
+                    localStorage.setItem('users', JSON.stringify(users));
+                    alert('Registration successful! You can now log in.');
+                    showLogin();
+                }
             } else {
-                alert('Please enter both your full name and email before logging in.');
+                document.getElementById('reg-error').innerText = 'All fields are required!';
             }
         }
-    </script>
 
+        // Log In User
+        function login() {
+    const username = document.getElementById('login-username').value;
+    const password = document.getElementById('login-password').value;
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const validUser = users.find(user => user.username === username && user.password === password);
+
+    if (validUser) {
+        alert(`Welcome, ${validUser.username}!`);
+        
+        // Store login state
+        localStorage.setItem('userLoggedIn', JSON.stringify(validUser));
+
+        // Redirect with delay
+        setTimeout(() => {
+            window.location.replace('shop.html');
+        }, 500);
+    } else {
+        document.getElementById('login-error').innerText = 'Invalid username or password!';
+    }
+}
+
+    </script>
 </body>
 </html>
 

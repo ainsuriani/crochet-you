@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="style_ajirah.css">
+    <link rel="stylesheet" href="style-nura.css">
+</head>
+<style>
+    .container {
+
+            text-align: left; /* Align the content to the left inside the container */
+        }
+</style>
+<body>
+    <h1>Payment Page</h1>
+    <div class="container">
+    <h3>Order Summary</h3>
+    <div id="order-summary"></div>
+
+    <h3>Shipping Information</h3>
+    <div id="shipping-info"></div>
+
+    <button id="confirm-order">Confirm Order</button>
+    </div>
+
+    <script>
+        // Load customer details and cart from localStorage
+        let customerDetails = JSON.parse(localStorage.getItem('customerDetails')) || {};
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Display cart items and customer details
+        let orderSummary = document.getElementById('order-summary');
+        orderSummary.innerHTML = cart.map(item => `<p>${item.name} - RM${item.price}</p>`).join('');
+
+        let shippingInfo = document.getElementById('shipping-info');
+        shippingInfo.innerHTML = `
+            <p>Name: ${customerDetails.name}</p>
+            <p>Address: ${customerDetails.address}</p>
+            <p>City: ${customerDetails.city}</p>
+            <p>Postal Code: ${customerDetails.postalCode}</p>
+            <p>Email: ${customerDetails.email}</p>
+        `;
+
+        // Handle order confirmation
+        document.getElementById('confirm-order').addEventListener('click', function() {
+            alert('Order confirmed! Thank you for shopping with us.');
+
+            // Clear the cart and customer details from localStorage after checkout
+            localStorage.removeItem('cart');
+            localStorage.removeItem('customerDetails');
+
+            window.location.href = 'homeshop.html'; 
+        });
+    </script>
+</body>
+</html>

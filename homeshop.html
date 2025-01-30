@@ -4,7 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crochet & You Studio</title>
+  <link rel="stylesheet" href="style_ajirah.css">
   <link rel="stylesheet" href="style-nura.css">
+
+  <script>
+    function checkLogin(event, category) {
+      event.preventDefault(); // Prevents default link action
+
+      if (localStorage.getItem("userLoggedIn") === "true") {
+        // If logged in, allow access to the shop
+        window.location.href = `shop.html?category=${category}`;
+      } else {
+        // If not logged in, redirect to login page
+        alert("You must log in first to view products!");
+        window.location.href = "login.html";
+      }
+    }
+  </script>
 </head>
 <body>
   <header class="hero">
@@ -39,5 +55,8 @@
       </div>
     </div>
   </section>
+  <div align="center">
+    <p><a href="#top" class="back-to-top">Back to Top</a></p>
+</div>
 </body>
 </html>
