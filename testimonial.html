@@ -174,7 +174,7 @@
                     <span class="star" data-value="3">★</span>
                     <span class="star" data-value="4">★</span>
                     <span class="star" data-value="5">★</span>
-                </div>
+                </div>                
                 <textarea id="review" rows="4" placeholder="Write your review here..." required></textarea>
                 <button type="submit">Submit</button>
             </form>
@@ -197,17 +197,20 @@
             },
         });
 
-        // Star Rating Script
-        const stars = document.querySelectorAll('.star');
-        let selectedRating = 0;
+       // Star Rating Script
+const stars = document.querySelectorAll('.star');
+let selectedRating = 0;
 
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                selectedRating = star.getAttribute('data-value');
-                stars.forEach(s => s.classList.remove('selected'));
-                star.classList.add('selected');
-            });
+stars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+        selectedRating = star.getAttribute('data-value');
+        
+        // Highlight all selected stars
+        stars.forEach((s, i) => {
+            s.classList.toggle('selected', i < index + 1);
         });
+    });
+});
 
         // Form Submission
         document.getElementById('ratingForm').addEventListener('submit', (e) => {
@@ -245,5 +248,11 @@
         });
     </script>
 
+    <div align="center" >
+        <p><a href="#top" class="back-to-top">Back to Top</a></p>
+    </div>
+
+
 </body>
 </html>
+
